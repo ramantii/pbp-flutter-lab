@@ -33,6 +33,33 @@ keyword Const di Dart berperilaku persis seperti keyword final. Satu-satunya per
 4. Membuat atribut teks yang menampilkan status ganjil atau genap dari counter beserta warnanya 
 5. Mengganti floatingActionButton untuk menambah dan mengurangi nilai dari counter 
 
+# Tugas 8 PBP
+
+## perbedaan Navigator.push dan Navigator.pushReplacement.
+* navigator.push memiliki fungsi untuk menambah route baru ke stack navigasi
+* navigator.pushReplacement memiliki fungsi mengganti route yang ada di stack navigasi ke route baru
+## widget yang dipakai pada proyek dan fungsinya
+* Form : berfungsi untuk membuat form
+* ListTile : berfungsi untuk membentuk sebuah list dan terdapat juga widget widget didalamnya
+* Drawer : berfungsi untuk membuat drawer di sisi kiri layar (untuk navigasi)
+* Column : berfungsi untuk menampung widget lainnya secara vertikal
+* Expanded : berfungsi untuk membuat size child widget memenuhi tempat yang kosong
+* DropdownButton : berfungsi untuk membuat user memilih pilihan menu item
+
+## jenis-jenis event yang ada pada Flutter
+onPressed : event yang memberi respon ketika sebuah widget ditekan.
+onChanged : event yang memberi respon ketika widget diubah.
+onSaved : event yang memberi respon ketika sebuah widget disimpan.
+onTap : event yang memberi respon ketika widget ditap
+
+## cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
+## cara implementasi
+1. Membuat file baru drawer.dart, untuk navigasi ke halaman counter_7, tambah Budget(form), data Budget(menampilkan data)
+2. Membuat file budget.dart untuk membuat class Budget 
+3. Membuat file form.dart untuk membuat inputan form judul, nominal, jenis budget, tanggal (date picker), dan button submit
+4. Membuat file data.dart untuk menampilkan data budget yang diinput dari form 
+
+ 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
