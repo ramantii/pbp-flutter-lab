@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/budget.dart';
-import 'package:counter_7/drawer.dart';
+import 'package:counter_7/model/budget.dart';
+import 'package:counter_7/util/drawer.dart';
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
@@ -200,7 +200,7 @@ class _MyFormPageState extends State<MyFormPage> {
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.all(12.0)),
                         backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 5, 76, 135)),
+                            const Color.fromARGB(255, 5, 76, 135)),
                       ),
                       child: const Text(
                         "Simpan",

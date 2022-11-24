@@ -1,9 +1,11 @@
-import 'package:counter_7/data.dart';
-import 'package:counter_7/form.dart';
+import 'package:counter_7/model/mywatchlist.dart';
+import 'package:counter_7/page/data.dart';
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/page_mywatchlist.dart';
 import 'package:flutter/material.dart';
-import 'package:counter_7/budget.dart';
-import 'package:counter_7/drawer.dart';
-import 'package:counter_7/form.dart';
+import 'package:counter_7/model/budget.dart';
+import 'package:counter_7/util/drawer.dart';
+import 'package:counter_7/page/form.dart';
 import 'package:counter_7/main.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -47,6 +49,14 @@ class MyDrawer extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const MyDataPage()),
               );
+            },
+          ),
+          ListTile(
+            title: const Text('My Watch List'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const MyWatchlistPage()));
             },
           ),
         ],
