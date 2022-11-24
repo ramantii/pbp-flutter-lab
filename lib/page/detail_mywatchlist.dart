@@ -1,120 +1,117 @@
-import 'package:counter_7/util/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:counter_7/util/drawer.dart';
+import 'package:intl/intl.dart';
 import 'package:counter_7/model/mywatchlist.dart';
+import 'package:counter_7/util/drawer.dart';
 
-class MyWatchListDetailPage extends StatelessWidget {
-  final MyWatchList myWatchList;
-  const MyWatchListDetailPage({super.key, required this.myWatchList});
+class ShowWatchListDetailsPage extends StatefulWidget {
+  ShowWatchListDetailsPage({super.key, this.watchlistItem});
+  var watchlistItem;
+
+  @override
+  State<ShowWatchListDetailsPage> createState() =>
+      _ShowWatchListDetailsPageState();
+}
+
+class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
   @override
   Widget build(BuildContext context) {
-    final titleMyWatchlist = Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          myWatchList.title,
-          style: const TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ));
-
-    final releaseDateMyWatchlist = Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Row(
-        children: [
-          const Text(
-            "Release Date: ",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          Text(
-            myWatchList.released_date,
-            style: const TextStyle(fontSize: 20),
-          ),
-        ],
-      ),
-    );
-
-    final ratingMyWatchlist = Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Row(
-        children: [
-          const Text(
-            "Rating: ",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          Text(
-            "${myWatchList.rating}/5",
-            style: const TextStyle(fontSize: 20),
-          )
-        ],
-      ),
-    );
-
-    final statusMyWatchlist = Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Row(
-          children: [
-            const Text(
-              "Status: ",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            Text(
-              myWatchList.watched ? 'watched' : 'not yet watched',
-              style: const TextStyle(fontSize: 20),
-            )
-          ],
-        ));
-
-    final reviewMyWatchlist = Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Row(
-          children: [
-            Flexible(
-                child: RichText(
-              text: TextSpan(
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-                children: <TextSpan>[
-                  const TextSpan(
-                      text: 'Review: ',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  TextSpan(
-                    text: myWatchList.review,
-                  ),
-                ],
-              ),
-            )),
-          ],
-        ));
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detail'),
-      ),
-      drawer: const MyDrawer(),
-      body: Column(
-        children: <Widget>[
-          titleMyWatchlist,
-          releaseDateMyWatchlist,
-          ratingMyWatchlist,
-          statusMyWatchlist,
-          reviewMyWatchlist,
-        ],
-      ),
-      persistentFooterButtons: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
-            minimumSize: const Size.fromHeight(40),
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            'Back',
-            style: TextStyle(fontSize: 12),
-          ),
-        ),
-      ],
-    );
+        appBar: AppBar(title: const Text("Detail")),
+        drawer: MyDrawer(),
+        body: Padding(
+            padding: EdgeInsets.all(15),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    widget.watchlistItem.fields.title,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.fade,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
+                  ),
+                  const Text(''),
+                  Padding(
+                      padding: EdgeInsets.all(8),
+                      child: RichText(
+                          text: TextSpan(
+                              text: 'Release Date: ',
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Color.fromARGB(255, 44, 45, 88),
+                                  fontWeight: FontWeight.bold),
+                              children: <TextSpan>[
+                            TextSpan(
+                                text:
+                                    '${DateFormat("MMM dd, y").format(widget.watchlistItem.fields.releaseDate)}',
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal,
+                                ))
+                          ]))),
+                  Padding(
+                      padding: EdgeInsets.all(8),
+                      child: RichText(
+                          text: TextSpan(
+                              text: 'Rating: ',
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                              children: <TextSpan>[
+                            TextSpan(
+                                text:
+                                    '${widget.watchlistItem.fields.rating}/10',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                ))
+                          ]))),
+                  Padding(
+                      padding: EdgeInsets.all(8),
+                      child: RichText(
+                          text: TextSpan(
+                              text: 'Status: ',
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                              children: <TextSpan>[
+                            TextSpan(
+                                text:
+                                    '${widget.watchlistItem.fields.watched ? "watched" : "not yet watched"}',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                ))
+                          ]))),
+                  Padding(
+                      padding: EdgeInsets.all(8),
+                      child: RichText(
+                          text: TextSpan(
+                              text: 'Review: ',
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                              children: <TextSpan>[
+                            TextSpan(
+                                text: '${widget.watchlistItem.fields.review}',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                ))
+                          ]))),
+                  Expanded(child: Container()),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Back"),
+                  ),
+                ])));
   }
 }
