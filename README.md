@@ -59,15 +59,21 @@ onTap : event yang memberi respon ketika widget ditap
 3. Membuat file form.dart untuk membuat inputan form judul, nominal, jenis budget, tanggal (date picker), dan button submit
 4. Membuat file data.dart untuk menampilkan data budget yang diinput dari form 
 
-#TUGAS 9
+# TUGAS 9
  ## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
- Bisa, namun apabila hal tersebut dilakukan maka bisa terjadi data yang didapat tidak sesuai dengan struktur yang diinginkan
+ Bisa, namun apabila hal tersebut dilakukan maka bisa terjadi data yang didapat tidak sesuai dengan struktur yang diinginkan. Kalau tidak membuat model, maka perlu menyesuaikan manual data apa saja yang diterima dan tipe datanya ketika mendapat data response.
+ 
  ## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
-RichText: menambahkan teks dengan formatting yang berbeda-beda
-FutureBuilder: Widget yang digunakan untuk menampilkan data yang akan diambil dari web service oleh Future.
+- RichText: menambahkan teks dengan formatting yang berbeda-beda
+- FutureBuilder: Widget yang digunakan untuk menampilkan data yang akan diambil dari web service oleh Future.
 
- ## Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+ ## Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter
+Membuat model data yang sesuai dengan json yang diambil kemudian get dan decode jadi json, kemudian ubah data json menjadi model dart yang dibuat sebelumnya
+ 
  ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+ - refactor file
+ - menambahkan navigasi drawer
+ - membuat file mywatchlist.dart, fetch_mywatchlist.dart, page_mywatchlist.dart, detail_mywatchlist.dart
  
 ## Getting Started
 
