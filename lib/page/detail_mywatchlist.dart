@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:counter_7/model/mywatchlist.dart';
 import 'package:counter_7/util/drawer.dart';
+import 'package:counter_7/page/detail_mywatchlist.dart';
 
-class ShowWatchListDetailsPage extends StatefulWidget {
-  ShowWatchListDetailsPage({super.key, this.watchlistItem});
+class MyWatchListDetailPage extends StatefulWidget {
+  MyWatchListDetailPage({super.key, this.watchlistItem});
+
   var watchlistItem;
 
   @override
-  State<ShowWatchListDetailsPage> createState() =>
-      _ShowWatchListDetailsPageState();
+  State<MyWatchListDetailPage> createState() => _MyWatchListDetailPageState();
 }
 
-class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
+class _MyWatchListDetailPageState extends State<MyWatchListDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text("Detail")),
-        drawer: MyDrawer(),
+        drawer: const MyDrawer(),
         body: Padding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,7 +36,7 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                   ),
                   const Text(''),
                   Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: RichText(
                           text: TextSpan(
                               text: 'Release Date: ',
@@ -45,15 +46,15 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text:
-                                    '${DateFormat("MMM dd, y").format(widget.watchlistItem.fields.releaseDate)}',
+                                text: DateFormat("MMM dd, y").format(
+                                    widget.watchlistItem.fields.releaseDate),
                                 style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                 ))
                           ]))),
                   Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: RichText(
                           text: TextSpan(
                               text: 'Rating: ',
@@ -81,15 +82,16 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text:
-                                    '${widget.watchlistItem.fields.watched ? "watched" : "not yet watched"}',
+                                text: widget.watchlistItem.fields.watched
+                                    ? "watched"
+                                    : "not yet watched",
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ))
                           ]))),
                   Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: RichText(
                           text: TextSpan(
                               text: 'Review: ',
@@ -110,7 +112,7 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text("Back"),
+                    child: const Text("Back"),
                   ),
                 ])));
   }

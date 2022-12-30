@@ -22,13 +22,13 @@ class _MyWatchlistPageState extends State<MyWatchlistPage> {
             child: const Icon(Icons.autorenew, color: Colors.white),
           ),
           title: Text(
-            myWatchList.title,
+            myWatchList.fields.title,
           ),
           trailing: Checkbox(
-            value: myWatchList.watched,
+            value: myWatchList.fields.watched,
             onChanged: (bool? newValue) {
               setState(() {
-                myWatchList.watched = !myWatchList.watched;
+                myWatchList.fields.watched = !myWatchList.fields.watched;
               });
             },
           ),
@@ -36,8 +36,7 @@ class _MyWatchlistPageState extends State<MyWatchlistPage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        MyWatchListDetailPage(myWatchList: myWatchList)));
+                    builder: (context) => MyWatchListDetailPage()));
           },
         );
 
@@ -46,7 +45,7 @@ class _MyWatchlistPageState extends State<MyWatchlistPage> {
           elevation: 4,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: myWatchList.watched ? Colors.green : Colors.red,
+              color: myWatchList.fields.watched ? Colors.green : Colors.red,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(12)),
           ),
